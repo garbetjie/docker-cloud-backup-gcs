@@ -30,7 +30,7 @@ set -x
 extra_args=()
 [[ "$DELETE" = "true" ]] && extra_args+=("-d")
 [[ "$DRY_RUN" = "true" ]] && extra_args+=("-n")
-[[ "$EXCLUDE" != "" ]] && extra_args+=("-x '${EXCLUDE}'")
+[[ "$EXCLUDE" != "" ]] && extra_args+=("-x" "${EXCLUDE}")
 
 # Run the command.
 exec gsutil -o "GSUtil:parallel_thread_count=16" rsync -R -c "${extra_args[@]}" /mnt/ "gs://${BUCKET_NAME}/${BUCKET_PATH#/}"
