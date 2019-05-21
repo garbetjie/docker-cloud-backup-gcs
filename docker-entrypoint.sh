@@ -3,12 +3,6 @@
 # Ensure we exit on any failure.
 set -e
 
-# Ensure we have a project.
-if [[ "$CLOUDSDK_CORE_PROJECT" = "" ]]; then
-	echo "CLOUDSDK_CORE_PROJECT environment variable is required, and should contain the ID of the project to copy files to."
-	exit 1
-fi
-
 # Ensure we have a service account, and that it is a file that exists.
 if [[ "$GOOGLE_APPLICATION_CREDENTIALS" = "" ]] || [[ ! -f "$GOOGLE_APPLICATION_CREDENTIALS" ]]; then
 	echo "GOOGLE_APPLICATION_CREDENTIALS cannot be empty, and must point to a file containing service account credentials."
